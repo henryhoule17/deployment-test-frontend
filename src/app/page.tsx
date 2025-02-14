@@ -20,7 +20,7 @@ export default function Home() {
       setCount(data.count);
       setMessage(data.message);
     } catch (error) {
-      setMessage('Error fetching counter');
+      setMessage(`Error fetching counter: ${error}`);
     }
   };
 
@@ -34,7 +34,7 @@ export default function Home() {
       setCount(data.count);
       setMessage(data.message);
     } catch (error) {
-      setMessage('Error incrementing counter');
+      setMessage(`Error incrementing counter: ${error}`);
     } finally {
       setLoading(false);
     }
