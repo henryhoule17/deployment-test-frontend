@@ -13,9 +13,11 @@ export default function Home() {
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState(false);
 
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
   const fetchCounter = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/counter');
+      const response = await fetch(`${API_BASE_URL}/api/counter`);
       const data: CounterResponse = await response.json();
       setCount(data.count);
       setMessage(data.message);
@@ -27,7 +29,7 @@ export default function Home() {
   const incrementCounter = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/api/counter/increment', {
+      const response = await fetch(`${API_BASE_URL}/api/counter/increment`, {
         method: 'POST',
       });
       const data: CounterResponse = await response.json();
